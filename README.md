@@ -65,3 +65,7 @@ Stopped. Total clipboard changes recorded: {change_count}")
 if __name__ == "__main__":
     monitor_clipboard()
 ```
+### Notes:
+- This script only detects **text** clipboard changes, not images or files.
+- On some Linux systems, additional clipboard utilities may be required.
+- Lowering the interval will increase CPU usage; increasing it reduces sensitivity.
