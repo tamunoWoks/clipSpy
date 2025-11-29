@@ -14,3 +14,16 @@ Make sure you have the following Python packages installed:
 pip install pyperclip
 ```
 `pyperclip` supports clipboard access across Windows, macOS, and Linux (requires `xclip` or `xsel` on some Linux distributions).
+
+### Usage:
+Run the script using Python:
+``` bash
+python monitor_clipboard.py
+```
+Once running, the terminal will display messages similar to:
+
+    --- Clipboard Change #1 ---
+    Hello world
+    ----------------------------------------
+To stop monitoring, press:
+    Ctrl + C
