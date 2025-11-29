@@ -27,3 +27,12 @@ Once running, the terminal will display messages similar to:
     ----------------------------------------
 To stop monitoring, press:
     Ctrl + C
+
+### How It Works:
+The script repeatedly checks the current clipboard contents using `pyperclip.paste()` and compares it against the last observed value.  
+If a change is detected:
+- It increments an internal counter
+- Prints the new clipboard contents
+- Logs a separator line for readability.  
+
+The monitor pauses for **0.1 seconds** per loop to reduce CPU usage.
