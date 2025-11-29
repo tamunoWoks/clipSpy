@@ -29,10 +29,39 @@ To stop monitoring, press:
     Ctrl + C
 
 ### How It Works:
-The script repeatedly checks the current clipboard contents using `pyperclip.paste()` and compares it against the last observed value.  
-If a change is detected:
+The script repeatedly checks the current clipboard contents using `pyperclip.paste()` and compares it against the last observed value. If a change is detected:
 - It increments an internal counter
 - Prints the new clipboard contents
 - Logs a separator line for readability.  
 
 The monitor pauses for **0.1 seconds** per loop to reduce CPU usage.
+
+### Script:
+``` python
+import pyperclip
+import time
+
+def monitor_clipboard():
+    print('Recording clipboard... (Ctrl-C to stop)')
+    previous_content = ''
+    change_count = 0
+
+    try:
+        while True:
+            content = pyperclip.paste()
+            if content != previous_content:
+                change_count += 1
+                print(f"
+--- Clipboard Change #{change_count} ---")
+                print(content)
+                print("-" * 40)
+                previous_content = content
+            time.sleep(0.1)  # Reduced frequency to 0.1s to be less resource-intensive
+
+    except KeyboardInterrupt:
+        print(f"
+Stopped. Total clipboard changes recorded: {change_count}")
+
+if __name__ == "__main__":
+    monitor_clipboard()
+```
